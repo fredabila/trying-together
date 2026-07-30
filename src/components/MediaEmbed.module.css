@@ -1,0 +1,49 @@
+.wrapper {
+  margin-top: var(--space-sm);
+}
+
+.wrapper:first-child {
+  margin-top: 0;
+}
+
+.label {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-bark);
+  margin-bottom: 0.5rem;
+}
+
+.audioFrame {
+  display: block;
+  width: 100%;
+  border: 0;
+  border-radius: 12px;
+}
+
+/* Video keeps its own ratio rather than a fixed height, so it never letterboxes. */
+.videoWrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--color-deep-oak);
+}
+
+.videoWrapper iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+@media (max-width: 600px) {
+  /* Some show-level embeds default to 350-450px, which swallows a phone screen. */
+  .audioFrame {
+    max-height: 240px;
+  }
+}

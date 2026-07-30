@@ -1,0 +1,391 @@
+/* Entrance motion is opt-in via no-preference so nothing animates for users who
+   have asked it not to — and there is no flash of hidden content either way. */
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes riseIn {
+    from {
+      opacity: 0;
+      transform: translateY(18px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  .heroTagline,
+  .heroTitle,
+  .heroSubtitle,
+  .listenSection,
+  .playerCard {
+    animation: riseIn 0.6s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+  }
+
+  .heroTagline {
+    animation-delay: 0.05s;
+  }
+  .heroTitle {
+    animation-delay: 0.12s;
+  }
+  .heroSubtitle {
+    animation-delay: 0.22s;
+  }
+  .listenSection {
+    animation-delay: 0.3s;
+  }
+  .playerCard {
+    animation-delay: 0.18s;
+  }
+
+  .seriesItem,
+  .recentItem {
+    animation: riseIn 0.55s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+    animation-delay: var(--stagger, 0ms);
+  }
+}
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding: calc(var(--space-lg) + 1rem) 0 var(--space-lg);
+  /* A real gradient rather than the near-invisible 5% wash it replaces. */
+  background: linear-gradient(158deg, #f7f3ec 0%, #efe7d8 58%, #e6dbc6 100%);
+}
+
+/* Oversized quote glyph as background texture — gives the hero depth without
+   adding an asset. Sized and placed so the whole mark sits inside the section;
+   clipped, it reads as stray blobs rather than a quotation. Not in the a11y
+   tree since it is a pseudo-element. */
+.hero::before {
+  content: '\201C';
+  position: absolute;
+  top: -1rem;
+  right: 3vw;
+  font-family: var(--font-heading);
+  font-size: 15rem;
+  line-height: 1;
+  color: var(--color-deep-oak);
+  opacity: 0.045;
+  pointer-events: none;
+  user-select: none;
+}
+
+.heroArtwork {
+  position: absolute;
+  /* `fill` positions against the section; keep it off-centre and very faint. */
+  object-fit: cover;
+  opacity: 0.06;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}
+
+.heroInner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: var(--space-lg);
+  align-items: center;
+}
+
+.heroCopy {
+  min-width: 0;
+}
+
+.heroTagline {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--color-bark);
+  margin-bottom: 0.85rem;
+}
+
+.heroTitle {
+  font-size: clamp(2.6rem, 5.2vw, 4.6rem);
+  color: var(--color-deep-oak);
+  margin-bottom: var(--space-sm);
+  text-wrap: balance;
+}
+
+.heroSubtitle {
+  font-size: 1.15rem;
+  max-width: 34em;
+  color: var(--color-ink);
+  opacity: 0.88;
+  margin-bottom: var(--space-md);
+}
+
+.playerCard {
+  background: var(--color-white);
+  border-radius: 16px;
+  padding: var(--space-md);
+  /* Warm-tinted depth, keyed to the brand green rather than neutral black. */
+  box-shadow: 0 1px 2px rgba(36, 61, 44, 0.05), 0 18px 44px -12px rgba(36, 61, 44, 0.18);
+  position: relative;
+  z-index: 2;
+}
+
+.playerLabel {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-bark);
+  margin-bottom: 0.35rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Small gold dot that quietly pulses, so "latest" reads as live. */
+.playerLabel::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--color-acorn-gold);
+  flex: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes livePulse {
+    0%,
+    100% {
+      opacity: 1;
+      box-shadow: 0 0 0 0 rgba(200, 149, 58, 0.5);
+    }
+    50% {
+      opacity: 0.75;
+      box-shadow: 0 0 0 5px rgba(200, 149, 58, 0);
+    }
+  }
+
+  .playerLabel::before {
+    animation: livePulse 2.6s ease-in-out infinite;
+  }
+}
+
+.playerTitle {
+  font-family: var(--font-heading);
+  font-size: 1.85rem;
+  color: var(--color-deep-oak);
+  margin-bottom: 0.5rem;
+  line-height: 1.25;
+}
+
+.playerTitle a:hover {
+  color: var(--color-acorn-gold);
+}
+
+.playerDescription {
+  font-size: 1rem;
+  opacity: 0.85;
+  margin-bottom: var(--space-sm);
+}
+
+.playerMeta {
+  margin-top: var(--space-sm);
+  padding-top: var(--space-sm);
+  border-top: 1px solid rgba(36, 61, 44, 0.08);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.playerMetaText {
+  font-size: 0.85rem;
+  color: var(--color-bark);
+  margin: 0;
+}
+
+.emptyPlayer {
+  padding: var(--space-md);
+  border: 1px dashed var(--color-sage);
+  border-radius: 12px;
+  text-align: center;
+}
+
+.emptyPlayer p {
+  margin-bottom: 0.5rem;
+}
+
+.emptyPlayer p:last-child {
+  margin-bottom: 0;
+  font-size: 0.95rem;
+  opacity: 0.75;
+}
+
+.listenSection {
+  display: flex;
+}
+
+/* --- Series --- */
+
+.series {
+  padding: var(--space-lg) 0;
+  background: var(--color-cream);
+}
+
+.sectionHeader {
+  max-width: 46em;
+  margin-bottom: var(--space-md);
+}
+
+.sectionHeader h2 {
+  margin-bottom: 0.35rem;
+}
+
+.sectionHeader p {
+  color: var(--color-bark);
+  margin-bottom: 0;
+}
+
+.seriesGrid {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--space-sm);
+}
+
+.seriesItem {
+  display: flex;
+}
+
+.seriesLink {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  width: 100%;
+  padding: var(--space-sm);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.55);
+  /* The left rule thickens on hover — a directional cue without a layout shift. */
+  border-left: 3px solid rgba(36, 61, 44, 0.12);
+  transition: background-color var(--transition-fast), border-color var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.seriesLink:hover {
+  background: var(--color-white);
+  border-left-color: var(--color-acorn-gold);
+  transform: translateY(-3px);
+}
+
+.seriesNumber {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  color: var(--color-clay);
+  letter-spacing: 0.06em;
+}
+
+.seriesTitle {
+  font-size: 1.25rem;
+  margin-bottom: 0;
+  color: var(--color-deep-oak);
+}
+
+.seriesDescription {
+  font-size: 0.95rem;
+  color: var(--color-ink);
+  opacity: 0.8;
+  margin-bottom: 0;
+  flex: 1;
+}
+
+.seriesCount {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  /* Bark rather than gold: gold on white fails AA at this size. */
+  color: var(--color-bark);
+  margin-top: 0.4rem;
+}
+
+/* --- Recent episodes --- */
+
+.recent {
+  padding: var(--space-lg) 0;
+  background-color: var(--color-white);
+}
+
+.recentHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.recentHeader h2 {
+  margin-bottom: 0;
+}
+
+.recentGrid {
+  align-items: stretch;
+}
+
+.recentItem {
+  display: flex;
+}
+
+.recentItem > * {
+  width: 100%;
+}
+
+/* --- Newsletter --- */
+
+.newsletter {
+  padding: var(--space-lg) 0;
+  /* Deep oak anchors the foot of the page and marks this out as the one action.
+     The gradient resolves to the footer's own deep-oak so the two dark bands
+     meet without a visible seam. */
+  background: linear-gradient(170deg, #2c4a37 0%, var(--color-deep-oak) 100%);
+}
+
+.newsletterInner {
+  max-width: 620px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.newsletterInner h2 {
+  color: var(--color-cream);
+}
+
+.newsletterInner p {
+  color: rgba(245, 240, 232, 0.85);
+  margin-bottom: var(--space-md);
+}
+
+@media (min-width: 900px) {
+  .heroInner {
+    /* Copy gets the wider column; the player sits beside it instead of below. */
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: var(--space-md);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero::before {
+    font-size: 9rem;
+    right: 1rem;
+  }
+
+  .heroSubtitle {
+    font-size: 1.05rem;
+  }
+
+  .playerCard {
+    padding: var(--space-sm);
+  }
+
+  .playerTitle {
+    font-size: 1.5rem;
+  }
+}

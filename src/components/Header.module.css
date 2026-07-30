@@ -1,0 +1,144 @@
+.header {
+  padding: var(--space-sm) 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  background-color: var(--color-cream);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.logoMark {
+  /* The lockup is a stacked, near-square mark (859x538), so it needs more
+     height than a horizontal wordmark to reach a usable width in the header. */
+  height: 68px;
+  width: auto;
+}
+
+.links {
+  display: flex;
+  gap: var(--space-md);
+  align-items: center;
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: var(--color-ink);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.link:hover {
+  color: var(--color-acorn-gold);
+}
+
+/* The disclosure checkbox: off-screen but focusable, so keyboard users can
+   still reach it and the focus ring lands on the label via :focus-visible. */
+.toggleInput {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+  pointer-events: none;
+}
+
+.toggle {
+  display: none;
+}
+
+.toggleBars {
+  display: grid;
+  gap: 5px;
+  width: 22px;
+}
+
+.toggleBars span {
+  display: block;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--color-deep-oak);
+  transition: transform var(--transition-fast), opacity var(--transition-fast);
+}
+
+@media (max-width: 900px) {
+  .nav {
+    /* Logo and toggle on one row, menu panel below when open. */
+    flex-wrap: wrap;
+  }
+
+  .toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    margin-left: auto;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+
+  .links {
+    /* Collapsed by default; the grid-rows transition gives it a real open/close
+       rather than a jump, and stays hidden from assistive tech while closed. */
+    display: grid;
+    grid-template-rows: 0fr;
+    flex-basis: 100%;
+    gap: 0;
+    overflow: hidden;
+    visibility: hidden;
+    transition: grid-template-rows var(--transition-fast), visibility var(--transition-fast);
+  }
+
+  .toggleInput:checked ~ .nav .links {
+    grid-template-rows: 1fr;
+    visibility: visible;
+  }
+
+  .toggleInput:checked ~ .nav .toggleBars span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  .toggleInput:checked ~ .nav .toggleBars span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .toggleInput:checked ~ .nav .toggleBars span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  /* The row itself is the animated box, so padding lives on an inner wrapper
+     that only exists once open. */
+  .links > * {
+    padding: 0.35rem 0;
+  }
+
+  .toggleInput:focus-visible ~ .nav .toggle {
+    outline: 3px solid var(--color-acorn-gold);
+    outline-offset: 2px;
+  }
+}
+
+@media (max-width: 600px) {
+  .logoMark {
+    height: 50px;
+  }
+}

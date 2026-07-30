@@ -1,0 +1,142 @@
+.section {
+  margin-bottom: var(--space-md);
+}
+
+.heading {
+  font-size: 1.75rem;
+  margin-bottom: var(--space-sm);
+}
+
+.prose {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.prose p {
+  font-size: 1.125rem;
+  line-height: 1.7;
+  margin: 0;
+}
+
+.prose a {
+  color: var(--color-oak-mid);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.prose h2,
+.prose h3 {
+  margin-top: var(--space-sm);
+}
+
+.prose ul,
+.prose ol {
+  padding-left: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.prose blockquote {
+  border-left: 3px solid var(--color-clay);
+  padding-left: 1rem;
+  font-style: italic;
+  color: var(--color-bark);
+}
+
+.quote {
+  margin: var(--space-md) 0;
+  padding: var(--space-md);
+  background-color: var(--color-white);
+  border-left: 4px solid var(--color-acorn-gold);
+  border-radius: 4px;
+}
+
+.quoteText {
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  line-height: 1.4;
+  color: var(--color-deep-oak);
+  margin: 0;
+}
+
+.attribution {
+  margin-top: 0.75rem;
+  font-size: 0.95rem;
+  color: var(--color-bark);
+  letter-spacing: 0.02em;
+}
+
+.figure {
+  margin: var(--space-md) 0;
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  display: block;
+}
+
+.caption {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--color-bark);
+}
+
+.valueList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: var(--space-sm);
+}
+
+.valueItem {
+  padding: 1.25rem;
+  background-color: var(--color-white);
+  border-radius: 8px;
+  border: 1px solid rgba(107, 143, 112, 0.25);
+}
+
+.valueTitle {
+  font-size: 1.25rem;
+  margin-bottom: 0.35rem;
+}
+
+.valueBody {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.cta {
+  margin: var(--space-md) 0;
+  padding: var(--space-md);
+  background-color: var(--color-deep-oak);
+  border-radius: 8px;
+  text-align: center;
+}
+
+.ctaHeading {
+  color: var(--color-cream);
+  font-size: 1.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.ctaBody {
+  color: rgba(245, 240, 232, 0.85);
+  margin-bottom: var(--space-sm);
+}
+
+@media (min-width: 700px) {
+  .valueList {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .quoteText {
+    font-size: 1.3rem;
+  }
+}

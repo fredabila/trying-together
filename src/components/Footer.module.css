@@ -1,0 +1,74 @@
+.footer {
+  background-color: var(--color-deep-oak);
+  color: var(--color-cream);
+  padding: var(--space-xl) 0 var(--space-md);
+  /* No top margin: every page section carries its own bottom padding, and a
+     margin here leaves a stray cream band under full-bleed dark sections. */
+}
+
+.content {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-lg);
+  margin-bottom: var(--space-lg);
+}
+
+.column {
+  flex: 1;
+  /* min() so a 250px floor cannot exceed a 360px viewport minus padding. */
+  min-width: min(250px, 100%);
+}
+
+.title {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  color: var(--color-acorn-gold);
+  margin-bottom: var(--space-sm);
+}
+
+.text {
+  color: var(--color-cream);
+  opacity: 0.8;
+  font-size: 0.95rem;
+  margin-bottom: var(--space-sm);
+}
+
+.socials {
+  display: flex;
+  gap: var(--space-sm);
+  margin-top: var(--space-md);
+}
+
+.socialLink {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--color-cream);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color var(--transition-fast);
+}
+
+.socialLink:hover {
+  color: var(--color-acorn-gold);
+}
+
+.bottom {
+  text-align: center;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: var(--space-md);
+  font-size: 0.85rem;
+  opacity: 0.6;
+}
+
+@media (max-width: 900px) {
+  .footer {
+    /* 8rem of top padding is too much of a phone screen. */
+    padding-top: var(--space-lg);
+  }
+
+  .content {
+    gap: var(--space-md);
+  }
+}

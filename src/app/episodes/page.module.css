@@ -1,0 +1,122 @@
+.header {
+  text-align: center;
+}
+
+.filters {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-lg);
+}
+
+.filterBtn {
+  background: none;
+  border: 1px solid rgba(0,0,0,0.1);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  color: var(--color-ink);
+}
+
+.filterBtn:hover, .filterBtnActive {
+  background-color: var(--color-deep-oak);
+  color: var(--color-cream);
+  border-color: var(--color-deep-oak);
+}
+
+.header {
+  padding: var(--space-lg) 0 var(--space-md);
+}
+
+.empty {
+  text-align: center;
+  padding: var(--space-lg) var(--space-md);
+  background-color: var(--color-white);
+  border-radius: 12px;
+  border: 1px dashed var(--color-sage);
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.empty p {
+  margin-bottom: var(--space-sm);
+}
+
+.count {
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--color-bark);
+  margin: var(--space-md) 0 var(--space-lg);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--space-md);
+}
+
+.card {
+  background: var(--color-white);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+  transition: transform var(--transition-fast);
+  display: flex;
+  flex-direction: column;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+}
+
+.cardImage {
+  width: 100%;
+  aspect-ratio: 1;
+  background-color: var(--color-sage);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-white);
+  font-family: var(--font-heading);
+  font-size: 2rem;
+}
+
+.cardContent {
+  padding: var(--space-sm);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.cardSeries {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-clay);
+  margin-bottom: 0.5rem;
+}
+
+.cardTitle {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  color: var(--color-deep-oak);
+  margin-bottom: 0.5rem;
+  text-decoration: none;
+}
+
+.cardDesc {
+  font-size: 0.9rem;
+  opacity: 0.8;
+  margin-bottom: var(--space-sm);
+  flex: 1;
+}
+
+.cardLink {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--color-acorn-gold);
+}

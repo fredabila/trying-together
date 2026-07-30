@@ -1,0 +1,63 @@
+.wrapper {
+  width: 100%;
+}
+
+.title {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-bark);
+  margin-bottom: 0.7rem;
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+/* Pills rather than boxy outline buttons — reads as platform badges, and the
+   44px floor keeps them comfortable to tap. */
+.link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 1.05rem;
+  border-radius: 999px;
+  border: 1.5px solid rgba(36, 61, 44, 0.3);
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--color-deep-oak);
+  background: rgba(255, 255, 255, 0.5);
+  transition: background-color var(--transition-fast), border-color var(--transition-fast),
+    color var(--transition-fast);
+}
+
+.link:hover {
+  background: var(--color-deep-oak);
+  border-color: var(--color-deep-oak);
+  color: var(--color-cream);
+}
+
+@media (max-width: 600px) {
+  /* Two columns rather than a tall stack — seven platforms as full-width
+     buttons would push everything else off the screen. */
+  .list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .link {
+    padding: 0 0.6rem;
+    font-size: 0.78rem;
+    text-align: center;
+  }
+}

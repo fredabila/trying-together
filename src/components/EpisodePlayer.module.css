@@ -1,0 +1,102 @@
+.audioFrame {
+  width: 100%;
+  border: none;
+  border-radius: 12px;
+  display: block;
+  background-color: var(--color-deep-oak);
+}
+
+.videoWrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: var(--color-ink);
+}
+
+.videoWrapper iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.fallback {
+  padding: var(--space-md);
+  border: 1px dashed var(--color-sage);
+  border-radius: 12px;
+  text-align: center;
+  background-color: var(--color-cream);
+}
+
+.fallbackText {
+  margin-bottom: 1rem;
+  font-weight: 500;
+  color: var(--color-deep-oak);
+}
+
+.fallback p:last-child {
+  margin-bottom: 0;
+}
+
+.extras {
+  margin-top: var(--space-sm);
+  display: grid;
+  gap: var(--space-sm);
+}
+
+.alsoOn {
+  margin-top: var(--space-md);
+  padding-top: var(--space-sm);
+  border-top: 1px solid rgba(36, 61, 44, 0.12);
+}
+
+.alsoOnTitle {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-bark);
+  margin-bottom: 0.6rem;
+}
+
+.alsoOnList {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.alsoOnLink {
+  display: inline-flex;
+  align-items: center;
+  /* 44px keeps these comfortable as touch targets. */
+  min-height: 44px;
+  padding: 0 0.9rem;
+  border-radius: 999px;
+  border: 1.5px solid rgba(36, 61, 44, 0.25);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--color-deep-oak);
+  transition: background-color var(--transition-fast), border-color var(--transition-fast),
+    color var(--transition-fast);
+}
+
+.alsoOnLink:hover {
+  background: var(--color-deep-oak);
+  border-color: var(--color-deep-oak);
+  color: var(--color-cream);
+}
+
+@media (max-width: 600px) {
+  .fallback {
+    padding: var(--space-sm);
+  }
+
+  .audioFrame {
+    max-height: 240px;
+  }
+}
