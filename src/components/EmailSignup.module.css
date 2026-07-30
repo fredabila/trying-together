@@ -1,7 +1,13 @@
 .form {
   display: flex;
+  flex-direction: column;
   gap: var(--space-xs);
   width: 100%;
+}
+
+.formRow {
+  display: flex;
+  gap: var(--space-xs);
 }
 
 .input {
@@ -21,6 +27,11 @@
   border-color: var(--color-acorn-gold);
 }
 
+.input:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
 .inputDark {
   background-color: rgba(255,255,255,0.05);
   border-color: rgba(255,255,255,0.1);
@@ -36,8 +47,23 @@
   background-color: rgba(255,255,255,0.1);
 }
 
+.successMessage {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--color-acorn-gold);
+  margin: 0;
+}
+
+.errorMessage {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  color: #c0392b;
+  margin: 0;
+}
+
 @media (max-width: 480px) {
-  .form {
+  .formRow {
     flex-direction: column;
   }
 }
+

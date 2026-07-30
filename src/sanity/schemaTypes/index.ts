@@ -6,7 +6,8 @@ import { mediaEmbed } from './mediaEmbed';
 import { platformLink } from './platformLink';
 import { series } from './series';
 import { siteSettings } from './siteSettings';
+import { subscriber } from './subscriber';
 
 export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [episode, series, aboutPage, siteSettings, audioSource, mediaEmbed, platformLink],
+  types: [episode, series, aboutPage, siteSettings, audioSource, mediaEmbed, platformLink, subscriber],
 };

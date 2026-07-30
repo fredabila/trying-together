@@ -91,11 +91,22 @@ export const structure: StructureResolver = (S) =>
           S.document().schemaType('siteSettings').documentId('siteSettings').title('Site settings'),
         ),
 
+      S.divider(),
+
+      S.listItem()
+        .title('Subscribers')
+        .icon(() => '📬')
+        .child(
+          S.documentTypeList('subscriber')
+            .title('Subscribers')
+            .defaultOrdering([{ field: 'subscribedAt', direction: 'desc' }]),
+        ),
+
       // Anything added to the schema later still shows up, minus the items
       // already placed above by hand.
       ...S.documentTypeListItems().filter((item) => {
         const id = item.getId();
-        return id ? !['episode', 'series', ...SINGLETONS].includes(id) : false;
+        return id ? !['episode', 'series', 'subscriber', ...SINGLETONS].includes(id) : false;
       }),
     ]);
 
