@@ -13,8 +13,6 @@ export const subscriber = defineType({
   name: 'subscriber',
   title: 'Subscriber',
   type: 'document',
-  // Hide from the "create new" menu — entries come in from the form only.
-  __experimental_actions: ['read', 'update', 'delete'],
   fields: [
     defineField({
       name: 'email',
