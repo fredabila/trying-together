@@ -5,7 +5,6 @@ import { schema } from './src/sanity/schemaTypes';
 import { projectId, dataset, apiVersion } from './src/sanity/env';
 import { structure, singletonTypes } from './src/sanity/structure';
 import GuideTool from './src/sanity/components/GuideTool';
-import { HelpCircleIcon } from '@sanity/icons';
 
 export default defineConfig({
   name: 'trying-together',
@@ -34,7 +33,6 @@ export default defineConfig({
       {
         name: 'guide',
         title: 'Guide',
-        icon: HelpCircleIcon,
         component: GuideTool,
       },
     ];
