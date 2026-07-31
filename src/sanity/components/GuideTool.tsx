@@ -3,12 +3,12 @@ import { Card, Container, Heading, Text, Stack, Box } from '@sanity/ui';
 
 export default function GuideTool() {
   return (
-    <Container width={2} padding={4}>
-      <Card padding={4} radius={3} shadow={1} style={{ backgroundColor: 'white' }}>
+    <Container width={2} padding={5}>
+      <Card padding={5} radius={3} shadow={1} tone="default">
         <Stack space={5}>
           <Box>
-            <Heading as="h1" size={4}>Trying Together: Studio Guide</Heading>
-            <Box marginTop={3}>
+            <Heading as="h1" size={5}>Trying Together: Studio Guide</Heading>
+            <Box marginTop={4}>
               <Text size={2} muted>
                 Welcome! This guide explains how to manage your website content using Sanity Studio.
               </Text>
