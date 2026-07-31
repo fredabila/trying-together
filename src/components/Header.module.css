@@ -29,6 +29,11 @@
 
 .links {
   display: flex;
+  align-items: center;
+}
+
+.linksInner {
+  display: flex;
   gap: var(--space-md);
   align-items: center;
 }
@@ -79,10 +84,17 @@
   transition: transform var(--transition-fast), opacity var(--transition-fast);
 }
 
-@media (max-width: 900px) {
+@media (max-width: 600px) {
   .nav {
-    /* Logo and toggle on one row, menu panel below when open. */
+    /* Logo and toggle share the top row; the menu drops below it when open.
+       No space-between here — the toggle's own margin-left pushes it right,
+       so the wrapped menu row is not also spread apart. */
     flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+
+  .logoMark {
+    height: 50px;
   }
 
   .toggle {
@@ -97,20 +109,40 @@
   }
 
   .links {
-    /* Collapsed by default; the grid-rows transition gives it a real open/close
-       rather than a jump, and stays hidden from assistive tech while closed. */
+    /* One grid row containing the whole menu, so 0fr genuinely collapses it.
+       Collapsing the flex container directly would not work: its three links
+       would form three implicit rows and 0fr would only size the first. */
     display: grid;
     grid-template-rows: 0fr;
     flex-basis: 100%;
-    gap: 0;
     overflow: hidden;
+    transition: grid-template-rows var(--transition-normal);
+  }
+
+  .linksInner {
+    /* Stack, and stay unfocusable while the row is collapsed. */
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    min-height: 0;
     visibility: hidden;
-    transition: grid-template-rows var(--transition-fast), visibility var(--transition-fast);
+    transition: visibility var(--transition-normal);
   }
 
   .toggleInput:checked ~ .nav .links {
     grid-template-rows: 1fr;
+  }
+
+  .toggleInput:checked ~ .nav .linksInner {
     visibility: visible;
+    padding-bottom: var(--space-xs);
+  }
+
+  .link {
+    /* Full-width rows are far easier to hit than inline text. */
+    width: 100%;
+    min-height: 48px;
+    border-top: 1px solid rgba(36, 61, 44, 0.08);
   }
 
   .toggleInput:checked ~ .nav .toggleBars span:nth-child(1) {
@@ -125,20 +157,8 @@
     transform: translateY(-7px) rotate(-45deg);
   }
 
-  /* The row itself is the animated box, so padding lives on an inner wrapper
-     that only exists once open. */
-  .links > * {
-    padding: 0.35rem 0;
-  }
-
   .toggleInput:focus-visible ~ .nav .toggle {
     outline: 3px solid var(--color-acorn-gold);
     outline-offset: 2px;
-  }
-}
-
-@media (max-width: 600px) {
-  .logoMark {
-    height: 50px;
   }
 }

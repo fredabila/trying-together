@@ -44,12 +44,14 @@ export default function Header() {
           <span className="sr-only">Menu</span>
         </label>
 
-        <nav className={styles.links}>
-          {NAV.map((item) => (
-            <Link key={item.href} href={item.href} className={styles.link}>
-              {item.label}
-            </Link>
-          ))}
+        <nav className={styles.links} aria-label="Main">
+          <div className={styles.linksInner}>
+            {NAV.map((item) => (
+              <Link key={item.href} href={item.href} className={styles.link}>
+                {item.label}
+              </Link>
+            ))}
+          </div>
         </nav>
       </div>
     </header>
